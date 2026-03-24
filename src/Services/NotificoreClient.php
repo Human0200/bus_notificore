@@ -249,7 +249,7 @@ final class NotificoreClient implements NotificationClientInterface
 
     private function buildReference(string $phone, string $message): string
     {
-        return 'b24-' . date('YmdHis') . '-' . substr(hash('sha256', $phone . '|' . $message . '|' . microtime(true)), 0, 16);
+         return 'b' . substr(md5($phone . $message . microtime(true)), 0, 31);
     }
 
     private function isTruthy(string $value): bool
