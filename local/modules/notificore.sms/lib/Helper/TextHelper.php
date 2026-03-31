@@ -35,7 +35,9 @@ final class TextHelper
         $status = mb_strtolower(trim($status));
 
         return match ($status) {
-            'accepted', 'sent', 'scheduled' => ['label' => 'Принято', 'tone' => 'adm-info-message'],
+            'accepted' => ['label' => 'В обработке', 'tone' => 'adm-info-message'],
+            'sent' => ['label' => 'Передано оператору', 'tone' => 'adm-info-message'],
+            'scheduled' => ['label' => 'Запланировано', 'tone' => 'adm-info-message-yellow'],
             'delivered' => ['label' => 'Доставлено', 'tone' => 'adm-info-message-green'],
             'failed', 'http_error', 'rejected' => ['label' => 'Ошибка', 'tone' => 'adm-info-message-red'],
             'undeliverable', 'undelivered', 'expired', 'cancelled', 'canceled' => ['label' => 'Не доставлено', 'tone' => 'adm-info-message-red'],
